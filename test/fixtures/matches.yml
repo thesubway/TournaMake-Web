@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  leftId: "1"
+  rightId: "2"
+  leftScore: 1.5
+  rightScore: 1.0
+  isFinished: false
+
+two:
+  leftId: "1"
+  rightId: "2"
+  leftScore: 2
+  rightScore: 0
+  isFinished: false

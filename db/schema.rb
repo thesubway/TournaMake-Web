@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321212100) do
+ActiveRecord::Schema.define(version: 20160325161728) do
+
+  create_table "matches", force: :cascade do |t|
+    t.string   "leftId"
+    t.string   "rightId"
+    t.float    "leftScore"
+    t.float    "rightScore"
+    t.boolean  "isFinished"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "name"
