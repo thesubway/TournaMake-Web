@@ -8,4 +8,9 @@ class EntrantTest < ActiveSupport::TestCase
   test "entrant is valid" do
       assert @Entrant.valid?
   end
+
+  test "name should be present and non-blank" do
+      @Entrant.name = "     "
+      assert_not @Entrant.valid?
+  end
 end
