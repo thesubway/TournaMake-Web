@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seedLeft: MyString
+  seedRight: MyString
+  slotNum: 1
+
+two:
+  seedLeft: MyString
+  seedRight: MyString
+  slotNum: 1
