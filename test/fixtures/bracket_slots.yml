@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  seedLeft: MyString
-  seedRight: MyString
+  seedLeft: "Winner Group 1"
+  seedRight: "Runner-up"
   slotNum: 1
 
 two:
-  seedLeft: MyString
-  seedRight: MyString
-  slotNum: 1
+  seedLeft: "Group Winner"
+  seedRight: "Runner-up"
+  slotNum: 2
