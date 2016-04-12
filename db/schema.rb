@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410203624) do
+ActiveRecord::Schema.define(version: 20160411225633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 20160410203624) do
   end
 
   add_index "entrants", ["tournament_id"], name: "index_entrants_on_tournament_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "letter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.string   "leftId"

@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class GroupTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+      @Group = groups(:one)
+  end
+
+  test "Group is valid" do
+      assert @Group.valid?
+  end
 end
