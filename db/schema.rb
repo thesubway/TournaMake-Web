@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411225633) do
+ActiveRecord::Schema.define(version: 20160414185850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,12 @@ ActiveRecord::Schema.define(version: 20160411225633) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "letter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "tournament_id"
   end
+
+  add_index "groups", ["tournament_id"], name: "index_groups_on_tournament_id", using: :btree
 
   create_table "matches", force: :cascade do |t|
     t.string   "leftId"
@@ -86,5 +89,6 @@ ActiveRecord::Schema.define(version: 20160411225633) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "entrants", "tournaments"
+  add_foreign_key "groups", "tournaments"
   add_foreign_key "tournaments", "entrants"
 end
