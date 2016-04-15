@@ -22,4 +22,13 @@ class TournamentTest < ActiveSupport::TestCase
        assert_equal @Tournament, entrant.tournament
        assert @Tournament.reload.entrants.include? entrant
   end
+
+  test "tournament can have groups" do
+    group = groups(:one)
+    group.tournament = @Tournament
+    group.save
+    group.reload
+    assert_equal @Tournament, group.tournament
+    assert @Tournament.reload.groups.include? group
+  end
 end
