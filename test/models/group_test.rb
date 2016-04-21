@@ -18,4 +18,13 @@ class GroupTest < ActiveSupport::TestCase
       @Group.letter = "AB"
       assert_not @Group.valid?
   end
+
+  test "group can have matches" do
+    match = matches(:one)
+    match.group = @Group
+    match.save
+    match.reload
+    assert_equal @Group, match.group
+    assert @Group.reload.matches.include? match
+  end
 end
