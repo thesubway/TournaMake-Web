@@ -13,4 +13,13 @@ class BracketTest < ActiveSupport::TestCase
     @Bracket.isStarted = nil
     assert_not @Bracket.valid?
   end
+
+  test "bracket can have matches" do
+    match = matches(:one)
+    match.bracket = @Bracket
+    match.save
+    match.reload
+    assert_equal @Bracket, match.bracket
+    assert @Bracket.reload.matches.include? match
+  end
 end
