@@ -31,4 +31,14 @@ class TournamentTest < ActiveSupport::TestCase
     assert_equal @Tournament, group.tournament
     assert @Tournament.reload.groups.include? group
   end
+
+  test "tournament can have brackets" do
+    bracket = brackets(:one)
+    bracket.tournament = @Tournament
+    bracket.save
+    bracket.reload
+    assert_equal @Tournament, bracket.tournament
+    assert @Tournament.reload.brackets.include? bracket
+  end
+
 end
