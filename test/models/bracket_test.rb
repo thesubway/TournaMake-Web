@@ -22,4 +22,13 @@ class BracketTest < ActiveSupport::TestCase
     assert_equal @Bracket, match.bracket
     assert @Bracket.reload.matches.include? match
   end
+
+  test "bracket can have slots" do
+    bracket_slot = bracket_slots(:one)
+    bracket_slot.bracket = @Bracket
+    bracket_slot.save
+    bracket_slot.reload
+    assert_equal @Bracket, bracket_slot.bracket
+    assert @Bracket.reload.bracket_slots.include? bracket_slot
+  end
 end
