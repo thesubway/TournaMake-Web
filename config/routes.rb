@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'tournaments/new'
+  post 'tournaments' => 'tournaments#create'
 
   devise_for :users
 
