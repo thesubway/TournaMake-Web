@@ -1,5 +1,8 @@
 class TournamentsController < ApplicationController
   def new
+  end
+
+  def create
     tournament = Tournament.new(tournament_params)
     tournament.save
   end
