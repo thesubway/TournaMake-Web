@@ -1,7 +1,12 @@
 class TournamentsController < ApplicationController
+
+  # GET /tournaments/new
   def new
+    tournament = Tournament.new
   end
 
+  # POST /tournaments
+  # POST /tournaments.json
   def create
     tournament = Tournament.new(tournament_params)
     tournament.save
