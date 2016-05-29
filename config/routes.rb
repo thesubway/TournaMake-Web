@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tournaments
   get 'tournaments/new'
   get 'tournaments/update'
   get 'tournaments/create'
