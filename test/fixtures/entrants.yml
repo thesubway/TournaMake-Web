@@ -2,6 +2,8 @@
 
 one:
   name: "Entrant 1"
+  tournament_id:
 
 two:
   name: "Entrant 2"
+  tournament_id:
