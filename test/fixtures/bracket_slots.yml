@@ -4,8 +4,10 @@ one:
   seedLeft: "Winner Group 1"
   seedRight: "Runner-up"
   slotNum: 1
+  bracket_id:
 
 two:
   seedLeft: "Group Winner"
   seedRight: "Runner-up"
   slotNum: 2
+  bracket_id:

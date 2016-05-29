@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Format</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @tournaments.each do |tournament| %>
       <tr>
+        <td><%= tournament.id %></td>
         <td><%= tournament.name %></td>
         <td><%= tournament.format %></td>
         <td><%= link_to 'Show', tournament %></td>

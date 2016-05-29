@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Seedleft:</strong>
+  <%= @bracket_slot.seedLeft %>
+</p>
+
+<p>
+  <strong>Seedright:</strong>
+  <%= @bracket_slot.seedRight %>
+</p>
+
+<p>
+  <strong>Slotnum:</strong>
+  <%= @bracket_slot.slotNum %>
+</p>
+
+<p>
+  <strong>Bracket:</strong>
+  <%= @bracket_slot.bracket.id %>
+</p>
+
+<%= link_to 'Edit', edit_bracket_slot_path(@bracket_slot) %> |
+<%= link_to 'Back', bracket_slots_path %>

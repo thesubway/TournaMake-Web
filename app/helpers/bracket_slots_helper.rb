@@ -1,0 +1,2 @@
+module BracketSlotsHelper
+end

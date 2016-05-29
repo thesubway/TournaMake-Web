@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Isstarted</th>
       <th>Reseed</th>
       <th>Isfinished</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @brackets.each do |bracket| %>
       <tr>
+        <td><%= bracket.id %></td>
         <td><%= bracket.isStarted %></td>
         <td><%= bracket.reseed %></td>
         <td><%= bracket.isFinished %></td>
