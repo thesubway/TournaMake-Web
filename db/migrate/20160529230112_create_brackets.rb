@@ -4,6 +4,7 @@ class CreateBrackets < ActiveRecord::Migration
       t.boolean :isStarted
       t.boolean :reseed
       t.boolean :isFinished
+      t.references :tournament, index: true, foreign_key: true
 
       t.timestamps null: false
     end

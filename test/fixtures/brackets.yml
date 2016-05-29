@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  isStarted: true
+  isStarted: false
   reseed: false
   isFinished: false
+  tournament_id: 
 
 two:
   isStarted: false
   reseed: false
   isFinished: false
+  tournament_id: 

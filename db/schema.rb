@@ -11,65 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427223410) do
+ActiveRecord::Schema.define(version: 20160529230112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bracket_slots", force: :cascade do |t|
-    t.string   "seedLeft"
-    t.string   "seedRight"
-    t.integer  "slotNum"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "bracket_id"
-  end
-
-  add_index "bracket_slots", ["bracket_id"], name: "index_bracket_slots_on_bracket_id", using: :btree
 
   create_table "brackets", force: :cascade do |t|
     t.boolean  "isStarted"
     t.boolean  "reseed"
     t.boolean  "isFinished"
+    t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "tournament_id"
   end
 
   add_index "brackets", ["tournament_id"], name: "index_brackets_on_tournament_id", using: :btree
-
-  create_table "entrants", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "tournament_id"
-  end
-
-  add_index "entrants", ["tournament_id"], name: "index_entrants_on_tournament_id", using: :btree
-
-  create_table "groups", force: :cascade do |t|
-    t.string   "letter"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "tournament_id"
-  end
-
-  add_index "groups", ["tournament_id"], name: "index_groups_on_tournament_id", using: :btree
-
-  create_table "matches", force: :cascade do |t|
-    t.string   "leftId"
-    t.string   "rightId"
-    t.float    "leftScore"
-    t.float    "rightScore"
-    t.boolean  "isFinished"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "group_id"
-    t.integer  "bracket_id"
-  end
-
-  add_index "matches", ["bracket_id"], name: "index_matches_on_bracket_id", using: :btree
-  add_index "matches", ["group_id"], name: "index_matches_on_group_id", using: :btree
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "name"
@@ -96,10 +52,5 @@ ActiveRecord::Schema.define(version: 20160427223410) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "bracket_slots", "brackets"
   add_foreign_key "brackets", "tournaments"
-  add_foreign_key "entrants", "tournaments"
-  add_foreign_key "groups", "tournaments"
-  add_foreign_key "matches", "brackets"
-  add_foreign_key "matches", "groups"
 end

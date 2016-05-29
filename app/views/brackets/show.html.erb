@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isstarted:</strong>
+  <%= @bracket.isStarted %>
+</p>
+
+<p>
+  <strong>Reseed:</strong>
+  <%= @bracket.reseed %>
+</p>
+
+<p>
+  <strong>Isfinished:</strong>
+  <%= @bracket.isFinished %>
+</p>
+
+<p>
+  <strong>Tournament:</strong>
+  <%= @bracket.tournament %>
+</p>
+
+<%= link_to 'Edit', edit_bracket_path(@bracket) %> |
+<%= link_to 'Back', brackets_path %>

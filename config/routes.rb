@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :brackets
   resources :tournaments
   get 'tournaments/new'
   get 'tournaments/update'
