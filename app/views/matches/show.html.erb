@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Leftid:</strong>
+  <%= @match.leftId %>
+</p>
+
+<p>
+  <strong>Rightid:</strong>
+  <%= @match.rightId %>
+</p>
+
+<p>
+  <strong>Leftscore:</strong>
+  <%= @match.leftScore %>
+</p>
+
+<p>
+  <strong>Rightscore:</strong>
+  <%= @match.rightScore %>
+</p>
+
+<p>
+  <strong>Isfinished:</strong>
+  <%= @match.isFinished %>
+</p>
+
+<p>
+  <strong>Bracket:</strong>
+  <%= @match.bracket.id if @match.bracket != nil %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @match.group.id if @match.group != nil %>
+</p>
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>

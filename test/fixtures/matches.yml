@@ -6,6 +6,8 @@ one:
   leftScore: 1.5
   rightScore: 1.0
   isFinished: false
+  bracket_id:
+  group_id:
 
 two:
   leftId: "1"
@@ -13,3 +15,5 @@ two:
   leftScore: 2
   rightScore: 0
   isFinished: false
+  bracket_id:
+  group_id:

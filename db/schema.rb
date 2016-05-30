@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530000542) do
+ActiveRecord::Schema.define(version: 20160530002058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,21 @@ ActiveRecord::Schema.define(version: 20160530000542) do
 
   add_index "groups", ["tournament_id"], name: "index_groups_on_tournament_id", using: :btree
 
+  create_table "matches", force: :cascade do |t|
+    t.string   "leftId"
+    t.string   "rightId"
+    t.decimal  "leftScore"
+    t.decimal  "rightScore"
+    t.boolean  "isFinished"
+    t.integer  "bracket_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "matches", ["bracket_id"], name: "index_matches_on_bracket_id", using: :btree
+  add_index "matches", ["group_id"], name: "index_matches_on_group_id", using: :btree
+
   create_table "tournaments", force: :cascade do |t|
     t.string   "name"
     t.string   "format"
@@ -85,4 +100,6 @@ ActiveRecord::Schema.define(version: 20160530000542) do
   add_foreign_key "brackets", "tournaments"
   add_foreign_key "entrants", "tournaments"
   add_foreign_key "groups", "tournaments"
+  add_foreign_key "matches", "brackets"
+  add_foreign_key "matches", "groups"
 end
