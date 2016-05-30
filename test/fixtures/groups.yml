@@ -2,6 +2,8 @@
 
 one:
   letter: "A"
+  tournament_id:
 
 two:
   letter: "2"
+  tournament_id:
