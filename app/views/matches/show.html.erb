@@ -35,5 +35,16 @@
   <%= @match.group.id if @match.group != nil %>
 </p>
 
+<table>
+  <tr>
+    <td>Player <%= @match.leftId %></td>
+    <td>Score: <%= @match.leftScore %></td>
+  </tr>
+  <tr>
+    <td>Player <%= @match.rightId %></td>
+    <td>Score: <%= @match.rightScore %></td>
+  </tr>
+</table>
+
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>
