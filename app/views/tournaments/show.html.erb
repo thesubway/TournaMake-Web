@@ -14,5 +14,18 @@
   <%= @tournament.id %>
 </p>
 
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+  </tr>
+  <% @tournament.entrants.each do |entrant| %>
+  <tr>
+    <td>Player<%= entrant.id %></td>
+    <td><%= entrant.name %></td>
+  </tr>
+  <% end %>
+</table>
+
 <%= link_to 'Edit', edit_tournament_path(@tournament) %> |
 <%= link_to 'Back', tournaments_path %>
