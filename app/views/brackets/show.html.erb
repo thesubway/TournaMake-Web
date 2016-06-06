@@ -25,5 +25,25 @@
   <%= @bracket.tournament.id %>
 </p>
 
+<% @bracket.matches.each do |match| %>
+<!-- One table for each box score -->
+  <table>
+    <tr>
+      <th>Entrants</th>
+      <th>Score</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td><%= match.leftId %></td>
+      <td><%= match.leftScore %></td>
+    </tr>
+    <tr>
+      <td><%= match.rightId %></td>
+      <td><%= match.rightScore %></td>
+      <td> Final </td>
+    </tr>
+  </table>
+<% end %>
+
 <%= link_to 'Edit', edit_bracket_path(@bracket) %> |
 <%= link_to 'Back', brackets_path %>
