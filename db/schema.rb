@@ -20,38 +20,40 @@ ActiveRecord::Schema.define(version: 20160530002058) do
     t.string   "seedLeft"
     t.string   "seedRight"
     t.integer  "slotNum"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "bracket_slot_id"
     t.integer  "bracket_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_index "bracket_slots", ["bracket_id"], name: "index_bracket_slots_on_bracket_id", using: :btree
+  add_index "bracket_slots", ["bracket_slot_id"], name: "index_bracket_slots_on_bracket_slot_id", using: :btree
 
   create_table "brackets", force: :cascade do |t|
     t.boolean  "isStarted"
     t.boolean  "reseed"
     t.boolean  "isFinished"
-    t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "tournament_id"
   end
 
   add_index "brackets", ["tournament_id"], name: "index_brackets_on_tournament_id", using: :btree
 
   create_table "entrants", force: :cascade do |t|
     t.string   "name"
-    t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "tournament_id"
   end
 
   add_index "entrants", ["tournament_id"], name: "index_entrants_on_tournament_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "letter"
-    t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "tournament_id"
   end
 
   add_index "groups", ["tournament_id"], name: "index_groups_on_tournament_id", using: :btree
@@ -59,13 +61,13 @@ ActiveRecord::Schema.define(version: 20160530002058) do
   create_table "matches", force: :cascade do |t|
     t.string   "leftId"
     t.string   "rightId"
-    t.decimal  "leftScore"
-    t.decimal  "rightScore"
+    t.float    "leftScore"
+    t.float    "rightScore"
     t.boolean  "isFinished"
-    t.integer  "bracket_id"
-    t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "group_id"
+    t.integer  "bracket_id"
   end
 
   add_index "matches", ["bracket_id"], name: "index_matches_on_bracket_id", using: :btree
@@ -74,9 +76,14 @@ ActiveRecord::Schema.define(version: 20160530002058) do
   create_table "tournaments", force: :cascade do |t|
     t.string   "name"
     t.string   "format"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "entrant_id"
+    t.integer  "tournament_id"
   end
+
+  add_index "tournaments", ["entrant_id"], name: "index_tournaments_on_entrant_id", using: :btree
+  add_index "tournaments", ["tournament_id"], name: "index_tournaments_on_tournament_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -96,10 +103,13 @@ ActiveRecord::Schema.define(version: 20160530002058) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "bracket_slots", "bracket_slots"
   add_foreign_key "bracket_slots", "brackets"
   add_foreign_key "brackets", "tournaments"
   add_foreign_key "entrants", "tournaments"
   add_foreign_key "groups", "tournaments"
   add_foreign_key "matches", "brackets"
   add_foreign_key "matches", "groups"
+  add_foreign_key "tournaments", "entrants"
+  add_foreign_key "tournaments", "tournaments"
 end
