@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'tournaments' => 'tournaments#index'
 
   root 'tournaments#new'
+  match '/curl_example' => 'products#curl_get_example', via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

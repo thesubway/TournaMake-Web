@@ -1,6 +1,10 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: [:show, :edit, :update, :destroy]
 
+  def curl_get_example
+     render text: 'Thanks for sending a GET request with cURL!'
+  end
+
   # GET /tournaments
   # GET /tournaments.json
   def index
