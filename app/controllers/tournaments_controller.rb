@@ -28,7 +28,18 @@ class TournamentsController < ApplicationController
   # POST /tournaments
   # POST /tournaments.json
   def create
+    a = Entrant.new(name: "A")
+    b = Entrant.new(name: "B")
+    c = Entrant.new(name: "C")
+    d = Entrant.new(name: "D")
+    entrants = [a, b, c, d]
+
     @tournament = Tournament.new(tournament_params)
+
+    entrants.each do |entrant|
+      entrant.tournament = @tournament
+      entrant.save
+    end
 
     respond_to do |format|
       if @tournament.save
